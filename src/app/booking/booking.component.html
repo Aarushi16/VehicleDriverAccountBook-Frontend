@@ -1,0 +1,187 @@
+<div class="dashboard-container-wrap">
+    <div class="dashboard-container">
+        <div class="side-container-wrap">
+            <ul class="side-container" id="mydiv">
+                <li class="listMenuChild active">Booking</li>
+                <li class="listMenuChild" (click)="handelDriver()">Driver</li>
+                <li class="listMenuChild" (click)="handelVechile()">Vechile</li>
+            </ul>
+
+        </div>
+        <div class="main-container-wrap">
+            <div class="main-container">
+                <div class="heading_wrap">
+                    <div class="heading">Booking Data</div>
+                    <div class="heading">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Add Booking
+                        </button>
+
+                    </div>
+                    <!-- <div class="heading_option">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Filter Vechile Data</mat-label>
+                            <mat-select [(value)]="selected">
+                                <mat-option>None</mat-option>
+                              <mat-option value="option1">Option 1</mat-option>
+                              <mat-option value="option2">Option 2</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div> -->
+                </div>
+                <table>
+                    <tr>
+
+                        <th>Booking_ID</th>
+                        <th>Vehicle</th>
+                        <th>Driver</th>
+                        <th>TripFare</th>
+                        <th>Distance</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr *ngFor="let datas of vehiclesData ;let i = index">
+                        <td>{{datas.registrationNo}}</td>
+                        <td>{{datas.modelName}}</td>
+                        <td>{{datas.vehicleType}}</td>
+                        <td>{{datas.numberOfSeat}}</td>
+                        <td>{{datas.acAvailable}}</td>
+                        <td class="edit"  style="cursor:pointer;">
+                            <mat-icon data-bs-toggle="modal"
+                            data-bs-target="#exampleModalupdate">edit</mat-icon>
+                        </td>
+                        <!--  (click)="updatevehicledata(datas) -->
+                        <td (click)="deletevehicledata(datas)" style="cursor:pointer;">
+                            <mat-icon>delete</mat-icon>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="model_outer_contain">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Vehicle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Registration_No</mat-label>
+                            <input matInput placeholder="Registration_No" type="text"
+                                (keyup)="handelRegistration_No($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Model_Name</mat-label>
+                            <input matInput placeholder="Model_Name" type="text" (keyup)="handelModel_Name($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vehicle_Type</mat-label>
+                            <input matInput placeholder="Vehicle_Type" type="text" (keyup)="handelVehicle_Type($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Number_Of_Seat</mat-label>
+                            <input matInput placeholder="Number_Of_Seat" type="text"
+                                (keyup)="handelNumber_Of_Seat($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>AC_Available</mat-label>
+                            <input matInput placeholder="AC_Available" type="text" (keyup)="handelAC_Available($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <button type="button" class="btn btn-primary " data-bs-dismiss="modal" aria-label="Close" (click)="handelAddVechice()">
+                        Add Booking
+                    </button>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="model_outer_contain">
+    <div class="modal fade" id="exampleModalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Vehicle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Registration_No</mat-label>
+                            <input matInput placeholder="Registration_No" type="text"
+                                (keyup)="handelRegistration_NoU($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Model_Name</mat-label>
+                            <input matInput placeholder="Model_Name" type="text" (keyup)="handelModel_NameU($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vehicle_Type</mat-label>
+                            <input matInput placeholder="Vehicle_Type" type="text" (keyup)="handelVehicle_TypeU($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Number_Of_Seat</mat-label>
+                            <input matInput placeholder="Number_Of_Seat" type="text"
+                                (keyup)="handelNumber_Of_SeatU($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <div class="input-text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>AC_Available</mat-label>
+                            <input matInput placeholder="AC_Available" type="text" (keyup)="handelAC_AvailableU($event)">
+
+                        </mat-form-field>
+                    </div>
+                    <button type="button" class="btn btn-primary " data-bs-dismiss="modal" aria-label="Close" (click)="handelUpdateVechice()">
+                        Add Booking
+                    </button>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
